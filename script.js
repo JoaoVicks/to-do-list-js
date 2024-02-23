@@ -83,13 +83,25 @@ function editar(btnEdit) {
     })
 }
 function pesquisar() {
-    const valorInputPesquisar = inputPesquisar.value.toLowerCase
+    const valorInputPesquisar = inputPesquisar.value.toLowerCase()
     const PCard = document.querySelectorAll('.card p')
+   
+    const Card = document.querySelectorAll('.card')
+   
+    if(valorInputPesquisar===""){
+        Card.forEach((card)=>{
+        card.style.display='flex';
+        })
+        return
+    }
+
     let divCard;
+
     PCard.forEach((p) => {
         console.log(p)
-        let divCard =p.closest('div.card');
-        if (p.textContent.toLowerCase === valorInputPesquisar) {
+        
+        divCard =p.closest('div.card');
+        if (p.textContent.toLowerCase() === valorInputPesquisar) {
             divCard.style.display= 'flex'
         }
         else{
@@ -98,9 +110,19 @@ function pesquisar() {
     })
 
 }
-function voltarCardsPesquisa(){
-    const Card = document.querySelectorAll('.card')
-    Card.style.display='flex'
+function remove(btn){
+ const divCard = btn.closest('div.card')
+
+ const cardP= divCard.querySelector('p').textContent
+ tarefas.forEach((tarefa,indice) => {
+    console.log(indice)
+    console.log(tarefa)
+    
+
+    if(tarefa.name=== cardP){
+        tarefas.splice(indice)
+    }
+ });
 }
 
 //---------Eventos--------------
@@ -131,7 +153,10 @@ document.addEventListener('click', (e) => {
         constainerDark.classList.toggle('ativo')
 
         Armazanamentobtn = e.target
-
+    }
+    if(e.target.classList.contains('delete')){
+    const btnRemove = e.target
+    remove(btnRemove)
     }
 })
 
@@ -145,16 +170,9 @@ inputEditar.addEventListener('keydown', (e) => {
         console.log(tarefas)
     }
 })
-inputPesquisar.addEventListener('keydown', (e) => {
-    if (e.code === 'Enter') {
-        pesquisar()
-        console.log(tarefas)
-    }
-})
+
 inputPesquisar.addEventListener('input',()=>{
-    if(inputPesquisar.value === ''){
-    voltarCardsPesquisa()
-    }
+    pesquisar()
 })
 
 btnSearch.addEventListener('click',()=>{
