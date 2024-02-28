@@ -19,18 +19,21 @@
     background-color: #000000c7;
     backdrop-filter: blur(3px);
     top: 0;
+    
     left: 0;
     
 }
-
+html{
+    height: 100vh;
+}
 
 .container-geral{
     background-image: url(https://images.unsplash.com/photo-1511881830150-850572962174?w=3000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGNpdHl8ZW58MHx8MHx8fDA%3D);
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     background-position: center;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +50,7 @@
     text-align: center;
     padding: 1.5rem;
     border-radius:10px;
-    
+    margin: 11rem;
 }
 .title{
     margin-bottom: 2rem;
@@ -84,6 +87,9 @@ button{
     cursor: pointer;
     
 }
+button >i{
+    pointer-events: none;
+}
 button:hover{
     background-color: #12122e;
     color: white;
@@ -106,7 +112,7 @@ button:hover{
 }
 
 .container-pesquisa input,
-.container-filtro input{
+.container-filtro select{
     padding:  0.7rem 1rem;
     outline: none;
     border-radius: 5px;
@@ -115,25 +121,29 @@ button:hover{
     max-width: 250px;
     min-width: 200px;
 }
-.container-filtro input{
+.container-filtro select{
     width: 150px;
 }
-.card{
+.card{ 
+    display: flex;
     align-items: center;
     justify-content: space-around;
     margin-bottom: 1rem;
     background-color: #12122e;
     box-shadow: 10px 7px 10px rgb(155, 151, 151);
     border-radius: 5px;
-    display: flex;
+    transition: .3s;
+   
     color: white;
     height: 80px;
     width: 100%;
     
 }
 .card p{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 200;
+    flex:1;
+    max-width: 200px;
     
     
 }
